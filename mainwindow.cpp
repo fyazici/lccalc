@@ -59,6 +59,14 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    connect(ui->pbInductance, &QPushButton::clicked, this, &MainWindow::calculateInductance);
+    connect(ui->pbCapacitance, &QPushButton::clicked, this, &MainWindow::calculateCapacitance);
+    connect(ui->pbFrequency, &QPushButton::clicked, this, &MainWindow::calculateFrequency);
+
+    connect(ui->txtInductance, &QLineEdit::returnPressed, this, &MainWindow::calculateInductance);
+    connect(ui->txtCapacitance, &QLineEdit::returnPressed, this, &MainWindow::calculateCapacitance);
+    connect(ui->txtFrequency, &QLineEdit::returnPressed, this, &MainWindow::calculateFrequency);
 }
 
 MainWindow::~MainWindow()
@@ -73,7 +81,7 @@ void MainWindow::on_btnClear_clicked()
     ui->txtFrequency->clear();
 }
 
-void MainWindow::on_pbInductance_clicked()
+void MainWindow::calculateInductance()
 {
     auto cap = parseNumericScalePostfix(ui->txtCapacitance->text());
     auto freq = parseNumericScalePostfix(ui->txtFrequency->text());
@@ -85,7 +93,7 @@ void MainWindow::on_pbInductance_clicked()
     }
 }
 
-void MainWindow::on_pbCapacitance_clicked()
+void MainWindow::calculateCapacitance()
 {
     auto ind = parseNumericScalePostfix(ui->txtInductance->text());
     auto freq = parseNumericScalePostfix(ui->txtFrequency->text());
@@ -97,7 +105,7 @@ void MainWindow::on_pbCapacitance_clicked()
     }
 }
 
-void MainWindow::on_pbFrequency_clicked()
+void MainWindow::calculateFrequency()
 {
     auto ind = parseNumericScalePostfix(ui->txtInductance->text());
     auto cap = parseNumericScalePostfix(ui->txtCapacitance->text());

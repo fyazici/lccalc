@@ -18,11 +18,11 @@ public:
 private slots:
     void on_btnClear_clicked();
 
-    void on_pbInductance_clicked();
+    void calculateInductance();
 
-    void on_pbCapacitance_clicked();
+    void calculateCapacitance();
 
-    void on_pbFrequency_clicked();
+    void calculateFrequency();
 
 private:
     Ui::MainWindow *ui;
